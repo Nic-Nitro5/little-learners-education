@@ -1,6 +1,6 @@
 import Image from "next/image";
 import FadeIn from "./FadeIn";
-import Magnetic from "./Magnetic";
+import EmailCTAButton from "./EmailCTAButton";
 
 export default function CalloutBanner() {
   return (
@@ -19,14 +19,11 @@ export default function CalloutBanner() {
           Achieve <span className="font-script text-brand-beige">your</span>{" "}
           goals!
         </h2>
-        <Magnetic className="inline-block shrink-0">
-          <a
-            href="mailto:jasminhewetson@gmail.com"
-            className="inline-block rounded-full bg-brand-beige px-8 py-3 text-sm font-semibold tracking-wide text-brand-brown-dark transition-transform hover:scale-105"
-          >
-            Contact Now!
-          </a>
-        </Magnetic>
+        <EmailCTAButton
+          label="Contact Now!"
+          wrapperClassName="inline-block shrink-0"
+          className="inline-block rounded-full bg-brand-beige px-8 py-3 text-sm font-semibold tracking-wide text-brand-brown-dark transition-transform hover:scale-105"
+        />
       </FadeIn>
     </section>
   );

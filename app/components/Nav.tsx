@@ -3,14 +3,8 @@
 import Link from "next/link";
 import { useEffect, useState } from "react";
 import { LuMenu, LuX } from "react-icons/lu";
-
-const NAV_LINKS = [
-  { href: "/", label: "Home" },
-  { href: "/#about", label: "About Miss Jasmin" },
-  { href: "/#services", label: "Services" },
-  { href: "/#portfolio", label: "Methods" },
-  { href: "/#contact", label: "Contact" },
-];
+import UnderlineLink from "./UnderlineLink";
+import { NAV_LINKS, LEGAL_LINKS } from "../lib/site";
 
 export default function Nav() {
   const [open, setOpen] = useState(false);
@@ -56,15 +50,14 @@ export default function Nav() {
         <ul className="hidden items-center gap-8 md:flex">
           {NAV_LINKS.map((link) => (
             <li key={link.href}>
-              <Link
+              <UnderlineLink
                 href={link.href}
-                className={`group relative text-sm font-medium tracking-wide transition-colors hover:text-brand-beige ${
+                className={`text-sm font-medium tracking-wide transition-colors hover:text-brand-beige ${
                   scrolled ? "text-brand-brown" : "text-white"
                 }`}
               >
                 {link.label}
-                <span className="absolute -bottom-1 left-0 h-px w-full origin-center scale-x-0 bg-current transition-transform duration-300 ease-out group-hover:scale-x-100" />
-              </Link>
+              </UnderlineLink>
             </li>
           ))}
         </ul>
@@ -101,24 +94,20 @@ export default function Nav() {
               </Link>
             </li>
           ))}
-          <li className="mt-2 border-t border-brand-beige-light pt-2">
-            <Link
-              href="/privacy-policy"
-              onClick={() => setOpen(false)}
-              className="block rounded-md px-2 py-2 text-sm text-brand-brown/70 hover:bg-brand-beige-light"
+          {LEGAL_LINKS.map((link, i) => (
+            <li
+              key={link.href}
+              className={i === 0 ? "mt-2 border-t border-brand-beige-light pt-2" : undefined}
             >
-              Privacy Policy
-            </Link>
-          </li>
-          <li>
-            <Link
-              href="/terms"
-              onClick={() => setOpen(false)}
-              className="block rounded-md px-2 py-2 text-sm text-brand-brown/70 hover:bg-brand-beige-light"
-            >
-              Terms &amp; Conditions
-            </Link>
-          </li>
+              <Link
+                href={link.href}
+                onClick={() => setOpen(false)}
+                className="block rounded-md px-2 py-2 text-sm text-brand-brown/70 hover:bg-brand-beige-light"
+              >
+                {link.label}
+              </Link>
+            </li>
+          ))}
         </ul>
       </div>
     </header>

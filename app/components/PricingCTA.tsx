@@ -1,5 +1,5 @@
 import FadeIn from "./FadeIn";
-import Magnetic from "./Magnetic";
+import EmailCTAButton from "./EmailCTAButton";
 
 export default function PricingCTA() {
   return (
@@ -11,14 +11,11 @@ export default function PricingCTA() {
         <p className="mt-4 text-brand-brown-dark/80">
           Enquire and receive a custom quote tailored to you
         </p>
-        <Magnetic className="mt-8 inline-block">
-          <a
-            href="mailto:jasminhewetson@gmail.com"
-            className="inline-block rounded-full bg-brand-brown px-8 py-3 text-sm font-semibold tracking-wide text-white shadow-lg transition-transform hover:scale-105 hover:bg-brand-brown-dark"
-          >
-            Request Pricing
-          </a>
-        </Magnetic>
+        <EmailCTAButton
+          label="Request Pricing"
+          wrapperClassName="mt-8 inline-block"
+          className="inline-block rounded-full bg-brand-brown px-8 py-3 text-sm font-semibold tracking-wide text-white shadow-lg transition-transform hover:scale-105 hover:bg-brand-brown-dark"
+        />
         <p className="mt-4 text-xs text-brand-brown-dark/60">
           Response within 24 hours
         </p>

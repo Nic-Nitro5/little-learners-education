@@ -1,5 +1,8 @@
-import Link from "next/link";
 import { LuMail, LuVideo } from "react-icons/lu";
+import UnderlineLink from "./UnderlineLink";
+import { CONTACT_EMAIL, NAV_LINKS, LEGAL_LINKS } from "../lib/site";
+
+const FOOTER_LINKS = [...NAV_LINKS.slice(1), ...LEGAL_LINKS];
 
 export default function Footer() {
   const year = new Date().getFullYear();
@@ -11,7 +14,7 @@ export default function Footer() {
 
         <div className="flex items-center gap-5">
           <a
-            href="mailto:jasminhewetson@gmail.com"
+            href={`mailto:${CONTACT_EMAIL}`}
             aria-label="Email Little Learners Education"
             className="rounded-full border border-brand-brown/30 p-3 transition-colors hover:bg-brand-brown hover:text-white"
           >
@@ -27,22 +30,14 @@ export default function Footer() {
         </div>
 
         <nav aria-label="Footer" className="flex flex-wrap justify-center gap-x-6 gap-y-2 text-sm">
-          {[
-            { href: "/#about", label: "About Miss Jasmin" },
-            { href: "/#services", label: "Services" },
-            { href: "/#portfolio", label: "Methods" },
-            { href: "/#contact", label: "Contact" },
-            { href: "/privacy-policy", label: "Privacy Policy" },
-            { href: "/terms", label: "Terms & Conditions" },
-          ].map((link) => (
-            <Link
+          {FOOTER_LINKS.map((link) => (
+            <UnderlineLink
               key={link.href}
               href={link.href}
-              className="group relative hover:text-brand-brown-dark"
+              className="hover:text-brand-brown-dark"
             >
               {link.label}
-              <span className="absolute -bottom-1 left-0 h-px w-full origin-center scale-x-0 bg-current transition-transform duration-300 ease-out group-hover:scale-x-100" />
-            </Link>
+            </UnderlineLink>
           ))}
         </nav>
 

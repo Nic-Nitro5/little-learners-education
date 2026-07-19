@@ -3,6 +3,7 @@
 import { useState, type FormEvent } from "react";
 import { motion } from "framer-motion";
 import { LuChevronDown, LuSparkles } from "react-icons/lu";
+import { CONTACT_EMAIL } from "../lib/site";
 
 const SERVICES = [
   "Private Teaching",
@@ -13,8 +14,6 @@ const SERVICES = [
 ];
 
 type Status = "idle" | "submitting" | "success" | "error" | "fallback";
-
-const CONTACT_EMAIL = "jasminhewetson@gmail.com";
 
 export default function ContactForm() {
   const [status, setStatus] = useState<Status>("idle");

@@ -6,8 +6,9 @@ import { SiHtml5, SiCss, SiJavascript } from "react-icons/si";
 import type { IconType } from "react-icons";
 import FadeIn from "./FadeIn";
 import HoverCard from "./HoverCard";
-import Magnetic from "./Magnetic";
 import OrbitingGlobe from "./OrbitingGlobe";
+import SectionHeading from "./SectionHeading";
+import EmailCTAButton from "./EmailCTAButton";
 
 type Stack = {
   name: string;
@@ -39,19 +40,15 @@ export default function CodingSection() {
     <section className="bg-brand-beige-light px-6 py-24">
       <div className="mx-auto max-w-6xl text-center">
         <FadeIn>
-          <p className="text-sm font-semibold uppercase tracking-[0.3em] text-brand-brown/70">
-            Something New
-          </p>
-          <h2 className="mt-3 font-serif text-3xl font-semibold text-brand-brown sm:text-4xl">
-            Digital Training
-          </h2>
-          <p className="mx-auto mt-6 max-w-2xl leading-relaxed text-brand-brown">
-            As the world is swiftly going online, we have introduced{" "}
-            <strong>CODING</strong>. We have a new member on our team who is a
-            private teacher for this learning programme and we are excited
-            about this new journey for our current and future generation of
-            students.
-          </p>
+          <SectionHeading eyebrow="Something New" title="Digital Training">
+            <p className="mx-auto mt-6 max-w-2xl leading-relaxed text-brand-brown">
+              As the world is swiftly going online, we have introduced{" "}
+              <strong>CODING</strong>. We have a new member on our team who is
+              a private teacher for this learning programme and we are
+              excited about this new journey for our current and future
+              generation of students.
+            </p>
+          </SectionHeading>
         </FadeIn>
 
         <FadeIn delay={0.1} className="mt-14 hidden sm:block">
@@ -74,14 +71,11 @@ export default function CodingSection() {
           </motion.div>
         </div>
 
-        <Magnetic className="mt-12 inline-block">
-          <a
-            href="mailto:jasminhewetson@gmail.com"
-            className="inline-block rounded-full bg-brand-brown px-8 py-3 text-sm font-semibold tracking-wide text-white transition-colors hover:bg-brand-brown-dark"
-          >
-            Contact Now!
-          </a>
-        </Magnetic>
+        <EmailCTAButton
+          label="Contact Now!"
+          wrapperClassName="mt-12 inline-block"
+          className="inline-block rounded-full bg-brand-brown px-8 py-3 text-sm font-semibold tracking-wide text-white transition-colors hover:bg-brand-brown-dark"
+        />
       </div>
     </section>
   );

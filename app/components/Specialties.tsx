@@ -2,20 +2,18 @@ import Link from "next/link";
 import FadeIn from "./FadeIn";
 import SpecialtiesGrid from "./SpecialtiesGrid";
 import Magnetic from "./Magnetic";
+import SectionHeading from "./SectionHeading";
 
 export default function Specialties() {
   return (
     <section className="bg-white px-6 py-24">
       <div className="mx-auto max-w-6xl">
         <FadeIn>
-          <div className="mb-12 text-center">
-            <p className="text-sm font-semibold uppercase tracking-[0.3em] text-brand-brown/70">
-              Specializations
-            </p>
-            <h2 className="mt-3 font-serif text-3xl font-semibold text-brand-brown sm:text-4xl">
-              We Specialise In
-            </h2>
-          </div>
+          <SectionHeading
+            eyebrow="Specializations"
+            title="We Specialise In"
+            className="mb-12 text-center"
+          />
           <SpecialtiesGrid />
 
           <div className="mt-12 text-center">

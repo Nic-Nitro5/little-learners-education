@@ -8,6 +8,7 @@ import {
 import type { IconType } from "react-icons";
 import FadeIn from "./FadeIn";
 import HoverCard from "./HoverCard";
+import SectionHeading from "./SectionHeading";
 
 type Service = {
   title: string;
@@ -47,12 +48,7 @@ export default function Services() {
     <section id="services" className="scroll-mt-20 bg-brand-brown px-6 py-24">
       <div className="mx-auto max-w-6xl">
         <FadeIn className="text-center">
-          <p className="text-sm font-semibold uppercase tracking-[0.3em] text-brand-beige">
-            Services
-          </p>
-          <h2 className="mt-3 font-serif text-3xl font-semibold text-white sm:text-4xl">
-            What We Offer
-          </h2>
+          <SectionHeading eyebrow="Services" title="What We Offer" variant="dark" />
         </FadeIn>
 
         <div className="mt-14 grid gap-12 lg:grid-cols-[minmax(0,1fr)_minmax(0,1.2fr)] lg:items-start">

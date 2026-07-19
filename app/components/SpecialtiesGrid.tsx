@@ -18,7 +18,7 @@ import {
   LuX,
 } from "react-icons/lu";
 import type { IconType } from "react-icons";
-import Magnetic from "./Magnetic";
+import EmailCTAButton from "./EmailCTAButton";
 
 type Specialty = {
   name: string;
@@ -178,15 +178,12 @@ export default function SpecialtiesGrid() {
                 method below.
               </p>
 
-              <Magnetic className="mt-6 inline-block">
-                <a
-                  href="mailto:jasminhewetson@gmail.com"
-                  className="inline-flex items-center gap-2 rounded-full bg-brand-brown px-6 py-3 text-sm font-semibold text-white transition-colors hover:bg-brand-brown-dark"
-                >
-                  <LuMail size={16} aria-hidden="true" />
-                  Email Now
-                </a>
-              </Magnetic>
+              <EmailCTAButton
+                label="Email Now"
+                icon={LuMail}
+                wrapperClassName="mt-6 inline-block"
+                className="inline-flex items-center gap-2 rounded-full bg-brand-brown px-6 py-3 text-sm font-semibold text-white transition-colors hover:bg-brand-brown-dark"
+              />
             </motion.div>
           </motion.div>
         )}

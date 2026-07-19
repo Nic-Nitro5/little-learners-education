@@ -1,6 +1,5 @@
 import { NextResponse } from "next/server";
-
-const CONTACT_EMAIL = "jasminhewetson@gmail.com";
+import { CONTACT_EMAIL } from "../../lib/site";
 
 type ContactPayload = {
   name?: string;

@@ -1,6 +1,6 @@
 import { LuCheck, LuCalendar, LuMail, LuShieldCheck } from "react-icons/lu";
 import FadeIn from "./FadeIn";
-import Magnetic from "./Magnetic";
+import EmailCTAButton from "./EmailCTAButton";
 
 const CHECKLIST = [
   "Contact for consultation",
@@ -43,15 +43,12 @@ export default function BookingCTA() {
             <p className="mt-2 text-sm text-brand-brown/70">
               Choose a time that works best for you
             </p>
-            <Magnetic className="mt-6 inline-block">
-              <a
-                href="mailto:jasminhewetson@gmail.com"
-                className="inline-flex items-center justify-center gap-2 rounded-full bg-brand-brown px-6 py-3 text-sm font-semibold text-white transition-colors hover:bg-brand-brown-dark"
-              >
-                <LuMail size={16} aria-hidden="true" />
-                Email Now
-              </a>
-            </Magnetic>
+            <EmailCTAButton
+              label="Email Now"
+              icon={LuMail}
+              wrapperClassName="mt-6 inline-block"
+              className="inline-flex items-center justify-center gap-2 rounded-full bg-brand-brown px-6 py-3 text-sm font-semibold text-white transition-colors hover:bg-brand-brown-dark"
+            />
             <p className="mt-4 flex items-center justify-center gap-1.5 text-xs text-brand-brown/60">
               <LuShieldCheck size={14} aria-hidden="true" />
               Your information is secure

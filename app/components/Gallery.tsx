@@ -5,6 +5,7 @@ import Image from "next/image";
 import { AnimatePresence, motion } from "framer-motion";
 import FadeIn from "./FadeIn";
 import TiltCard from "./TiltCard";
+import SectionHeading from "./SectionHeading";
 
 type GalleryItem = {
   title: string;
@@ -91,12 +92,7 @@ export default function Gallery() {
     <section id="portfolio" className="scroll-mt-20 bg-white px-6 py-24">
       <div className="mx-auto max-w-6xl text-center">
         <FadeIn>
-          <p className="text-sm font-semibold uppercase tracking-[0.3em] text-brand-brown/70">
-            Gallery
-          </p>
-          <h2 className="mt-3 font-serif text-3xl font-semibold text-brand-brown sm:text-4xl">
-            Our Amazing Students
-          </h2>
+          <SectionHeading eyebrow="Gallery" title="Our Amazing Students" />
         </FadeIn>
 
         <div className="mt-14 grid grid-cols-2 gap-6 sm:grid-cols-4 sm:auto-rows-[11rem]">
