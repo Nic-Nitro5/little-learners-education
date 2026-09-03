@@ -22,9 +22,9 @@ type Service = {
 const SERVICES: Service[] = [
     {
     key: 1,
-    title: "Therapy and Counseling",
+    title: "Therapy and Counselling",
     description:
-      "Whether you decide on an online or in-house experience, sessions are guided by qualified, compassionate professionals across a range of therapeutic and counseling approaches, covering emotional, behavioral and developmental support for both children and adults. We work closely with each client and their family to set clear goals and track meaningful progress and lasting growth over time.",
+      "Whether you decide on an online or in-house experience, sessions are guided by qualified, compassionate professionals across a range of therapeutic and counselling approaches, covering emotional, behavioral and developmental support for both children and adults. We work closely with each client and their family to set clear goals and track meaningful progress and lasting growth over time.",
     icon: LuHeartHandshake,
   },
   {

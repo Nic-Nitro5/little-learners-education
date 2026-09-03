@@ -45,7 +45,7 @@ export default function IndividualNeedsPanel() {
           pass rate, we ensure you a great educational and therapy
           experience. With an online home base, we offer{" "}
           <strong className="text-white">Little Learners Education</strong> which
-          covers multiple educational options and counseling or therapy
+          covers multiple educational options and counselling or therapy
           focused on your specific needs at an international level. Should
           you require international service, we specialize in{" "}
           <strong className="text-white">online teaching methods</strong> through

@@ -5,7 +5,7 @@ export default function About() {
   return (
     <section id="about" className="scroll-mt-20 bg-white px-6 py-24">
       <div className="mx-auto max-w-6xl">
-        <FadeIn className="flex flex-row items-center text-center">
+        <FadeIn className="grid items-center gap-12 text-center md:grid-cols-2 md:text-left">
           <div className="max-w-2xl">
             <h2 className="font-serif text-3xl font-semibold text-brand-brown sm:text-4xl">
               About Miss Jasmin
@@ -20,7 +20,7 @@ export default function About() {
               psychology and research. With a solid foundation in business
               development and a strong professional work ethic, she is
               qualified and certified in Education and Psychology, as well as
-              various forms of Therapy and Counseling.
+              various forms of Therapy and Counselling.
             </p>
             <p className="mt-4 leading-relaxed text-brand-brown">
               Over the years, Jasmin has worked closely with families,
@@ -38,7 +38,7 @@ export default function About() {
             </p>
           </div>
 
-          <div className="relative mx-auto mt-12 aspect-4/5 w-full max-w-[360px] overflow-hidden rounded-2xl shadow-xl">
+          <div className="relative mx-auto aspect-4/5 w-full max-w-[360px] overflow-hidden rounded-2xl shadow-xl">
             <Image
               src="/images/jasmin.webp"
               alt="Portrait of Jasmin, Teacher, Therapist and Founder of Little Learners Education"
