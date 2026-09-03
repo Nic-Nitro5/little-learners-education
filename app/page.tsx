@@ -17,13 +17,13 @@ export default function Home() {
     <>
       <Hero />
       <StatsStrip />
+      <CalloutBanner />
       <About />
       <IndividualNeedsPanel />
       <Specialties />
       <Services />
       <PricingCTA />
       <CodingSection />
-      <CalloutBanner />
       <Gallery />
       <BookingCTA />
       <VideoSection />

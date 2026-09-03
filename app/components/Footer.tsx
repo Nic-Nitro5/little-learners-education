@@ -1,6 +1,13 @@
 import { LuMail, LuVideo } from "react-icons/lu";
+import { FaWhatsapp } from "react-icons/fa";
 import UnderlineLink from "./UnderlineLink";
-import { CONTACT_EMAIL, NAV_LINKS, LEGAL_LINKS } from "../lib/site";
+import {
+  CONTACT_EMAIL,
+  WHATSAPP_URL,
+  WHATSAPP_DISPLAY,
+  NAV_LINKS,
+  LEGAL_LINKS,
+} from "../lib/site";
 
 const FOOTER_LINKS = [...NAV_LINKS.slice(1), ...LEGAL_LINKS];
 
@@ -19,6 +26,15 @@ export default function Footer() {
             className="rounded-full border border-brand-brown/30 p-3 transition-colors hover:bg-brand-brown hover:text-white"
           >
             <LuMail size={18} aria-hidden="true" />
+          </a>
+          <a
+            href={WHATSAPP_URL}
+            target="_blank"
+            rel="noopener noreferrer"
+            aria-label={`Message Little Learners Education on WhatsApp at ${WHATSAPP_DISPLAY}`}
+            className="rounded-full border border-brand-brown/30 p-3 transition-colors hover:bg-brand-brown hover:text-white"
+          >
+            <FaWhatsapp size={18} aria-hidden="true" />
           </a>
           <span
             aria-label="Video consultations available"

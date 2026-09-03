@@ -13,15 +13,23 @@ export default function Icon() {
           display: "flex",
           alignItems: "center",
           justifyContent: "center",
-          background: "#8f6942",
+          backgroundImage:
+            "linear-gradient(135deg, #f5efe6 0%, #d9b48c 45%, #8f6942 100%)",
           borderRadius: "7px",
-          color: "#d9b48c",
-          fontSize: 22,
-          fontWeight: 600,
-          fontFamily: "Georgia, serif",
         }}
       >
-        L
+        <div
+          style={{
+            display: "flex",
+            fontSize: 21,
+            fontWeight: 700,
+            letterSpacing: -1,
+            color: "#5c4227",
+            fontFamily: "Georgia, serif",
+          }}
+        >
+          LL
+        </div>
       </div>
     ),
     { ...size }

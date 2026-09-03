@@ -5,14 +5,16 @@ import EmailCTAButton from "./EmailCTAButton";
 export default function CalloutBanner() {
   return (
     <section className="relative isolate overflow-hidden px-6 py-20">
-      <Image
-        src="/images/pencil-book.jpeg"
-        alt=""
-        fill
-        sizes="100vw"
-        className="-z-10 object-cover"
-      />
-      <div className="absolute inset-0 -z-10 bg-brand-brown-dark/80" />
+      <div className="absolute inset-0 -z-10">
+        <Image
+          src="/images/pencil-book.jpeg"
+          alt=""
+          fill
+          sizes="100vw"
+          className="object-cover object-center"
+        />
+        <div className="absolute inset-0 bg-brand-brown-dark/60" />
+      </div>
 
       <FadeIn className="mx-auto flex max-w-3xl flex-col items-center gap-6 text-center sm:flex-row sm:justify-between sm:text-left">
         <h2 className="font-serif text-2xl font-semibold text-white sm:text-3xl">

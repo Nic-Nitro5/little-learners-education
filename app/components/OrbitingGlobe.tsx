@@ -21,7 +21,7 @@ const RADIUS = 140;
 
 // Rounding here (rather than leaving raw Math.cos/sin floats) keeps the
 // server-rendered transform string and the client's hydrated value
-// identical — otherwise SSR and the browser can produce different
+// identical - otherwise SSR and the browser can produce different
 // floating-point tails for the same angle, causing a hydration mismatch.
 function round(value: number) {
   return Math.round(value * 100) / 100;

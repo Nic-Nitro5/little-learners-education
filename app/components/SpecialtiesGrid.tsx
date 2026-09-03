@@ -12,7 +12,6 @@ import {
   LuClipboardCheck,
   LuPuzzle,
   LuPalette,
-  LuMusic,
   LuCode,
   LuMail,
   LuX,
@@ -23,23 +22,26 @@ import EmailCTAButton from "./EmailCTAButton";
 type Specialty = {
   name: string;
   icon: IconType;
+  featured?: boolean;
 };
 
+// Order matters: on the 4-column board the two `featured` cards render as 2x2
+// bento tiles. Keeping one at index 0 and the next at index 5 makes the ten
+// cards tile a perfect 4x4 with no empty corner.
 export const SPECIALTIES: Specialty[] = [
-  { name: "Educational Psychology", icon: LuBrain },
+  { name: "Educational Psychology", icon: LuBrain, featured: true },
   { name: "Special Needs", icon: LuHeartHandshake },
-  { name: "Counselling", icon: LuMessageCircle },
+  { name: "Therapy | Counselling", icon: LuMessageCircle },
   { name: "TESOL | TEFL | TESL", icon: LuLanguages },
   { name: "Private Tuition", icon: LuBookOpen },
+  { name: "Coding", icon: LuCode, featured: true },
   { name: "Private Teaching", icon: LuUser },
   { name: "Assessments | Evaluations", icon: LuClipboardCheck },
   { name: "Play Therapy", icon: LuPuzzle },
-  { name: "Art Therapy | Little Creatives Club", icon: LuPalette },
-  { name: "Music Therapy", icon: LuMusic },
-  { name: "Coding", icon: LuCode },
+  { name: "Art Therapy | The Creatives Club", icon: LuPalette },
 ];
 
-// Subtle, candid "photos on a corkboard" tilt per card — index-aligned with
+// Subtle, candid "photos on a corkboard" tilt per card - index-aligned with
 // SPECIALTIES. The two featured (bento) cards get a smaller tilt so the
 // larger tiles still read as grounded rather than off-kilter.
 const ROTATIONS = [-0.5, 2, -2, 1.5, 2, -1, 1, -2, 1.5, -1.5, 0.5];
@@ -76,8 +78,7 @@ export default function SpecialtiesGrid() {
         style={CORK_BOARD_STYLE}
       >
         <div className="grid grid-cols-2 gap-5 sm:grid-cols-4 sm:auto-rows-[10rem] sm:gap-x-8 sm:gap-y-10">
-          {SPECIALTIES.map(({ name, icon: Icon }, i) => {
-            const featured = i === 0 || i === SPECIALTIES.length - 1;
+          {SPECIALTIES.map(({ name, icon: Icon, featured }, i) => {
             return (
             <motion.button
               key={name}
@@ -173,7 +174,7 @@ export default function SpecialtiesGrid() {
               </h3>
 
               <p className="mt-4 text-sm leading-relaxed text-brand-brown">
-                Hello! It&apos;s Jasmin here, — For further information
+                Hello! It&apos;s Jasmin here, - For further information
                 regarding this particular service, please select a contact
                 method below.
               </p>

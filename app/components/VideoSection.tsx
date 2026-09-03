@@ -11,7 +11,7 @@ export default function VideoSection() {
               controls
               preload="metadata"
               playsInline
-              aria-label="Little Learners Mondeling — student performing an Afrikaans oral"
+              aria-label="Little Learners Mondeling - student performing an Afrikaans oral"
               className="h-full w-full object-cover"
             >
               Your browser does not support embedded video.
@@ -19,7 +19,7 @@ export default function VideoSection() {
           </div>
         </FadeIn>
 
-        <FadeIn delay={0.1}>
+        <FadeIn delay={0.1} className="text-center">
           <h2 className="font-serif text-3xl font-semibold text-brand-brown sm:text-4xl">
             Little Learners - Mondeling
           </h2>

@@ -1,6 +1,6 @@
 "use client";
 
-import { useState } from "react";
+import { useRef, useState } from "react";
 import Image from "next/image";
 import { AnimatePresence, motion } from "framer-motion";
 import FadeIn from "./FadeIn";
@@ -87,17 +87,38 @@ export const GALLERY: GalleryItem[] = [
 export default function Gallery() {
   const [activeIndex, setActiveIndex] = useState(0);
   const active = GALLERY[activeIndex];
+  const featuredRef = useRef<HTMLDivElement>(null);
+
+  function selectItem(index: number) {
+    setActiveIndex(index);
+    // On mobile the featured photo sits above the stacked thumbnails, so a tap
+    // lower down changes something off-screen - bring it back into view. Desktop
+    // keeps its normal scroll position untouched.
+    if (typeof window === "undefined") return;
+    if (!window.matchMedia("(max-width: 639px)").matches) return;
+    const prefersReduced = window.matchMedia(
+      "(prefers-reduced-motion: reduce)"
+    ).matches;
+    featuredRef.current?.scrollIntoView({
+      behavior: prefersReduced ? "auto" : "smooth",
+      block: "start",
+    });
+  }
 
   return (
     <section id="portfolio" className="scroll-mt-20 bg-white px-6 py-24">
       <div className="mx-auto max-w-6xl text-center">
         <FadeIn>
-          <SectionHeading eyebrow="Gallery" title="Our Amazing Students" />
+          <SectionHeading eyebrow="Gallery of Methods" title="Our Amazing Students" />
         </FadeIn>
 
-        <div className="mt-14 grid grid-cols-2 gap-6 sm:grid-cols-4 sm:auto-rows-[11rem]">
-          <FadeIn className="sm:col-span-2 sm:row-span-2">
-            <TiltCard className="group relative h-full min-h-40 overflow-hidden rounded-2xl shadow-md">
+        <div className="mt-14 grid grid-cols-1 gap-6 sm:grid-cols-4 sm:auto-rows-[11rem]">
+          <div
+            ref={featuredRef}
+            className="scroll-mt-24 sm:col-span-2 sm:row-span-2"
+          >
+            <FadeIn className="h-full">
+            <TiltCard className="group relative h-full min-h-64 overflow-hidden rounded-2xl shadow-md sm:min-h-40">
               <AnimatePresence mode="sync">
                 <motion.div
                   key={active.image}
@@ -125,7 +146,8 @@ export default function Gallery() {
                 </p>
               </div>
             </TiltCard>
-          </FadeIn>
+            </FadeIn>
+          </div>
 
           {GALLERY.map((item, i) => {
             if (i === activeIndex) return null;
@@ -133,16 +155,16 @@ export default function Gallery() {
               <FadeIn key={item.title} delay={(i % 2) * 0.1}>
                 <button
                   type="button"
-                  onClick={() => setActiveIndex(i)}
+                  onClick={() => selectItem(i)}
                   aria-label={`Show "${item.title}" as the featured photo`}
                   className="block h-full w-full text-left"
                 >
-                  <TiltCard className="group relative h-full min-h-40 overflow-hidden rounded-2xl shadow-md">
+                  <TiltCard className="group relative h-full min-h-64 overflow-hidden rounded-2xl shadow-md sm:min-h-40">
                     <Image
                       src={item.image}
                       alt={item.title}
                       fill
-                      sizes="(min-width: 640px) 25vw, 50vw"
+                      sizes="(min-width: 640px) 25vw, 100vw"
                       className={`object-cover transition-transform duration-500 group-hover:scale-110 ${item.focus ?? "object-center"}`}
                     />
                     <div className="absolute inset-0 flex flex-col justify-end bg-gradient-to-t from-brand-brown-dark/90 via-brand-brown-dark/20 to-transparent p-6 text-left opacity-0 transition-opacity duration-300 group-hover:opacity-100 group-focus-within:opacity-100">

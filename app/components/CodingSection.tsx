@@ -1,7 +1,5 @@
 "use client";
 
-import { useRef } from "react";
-import { motion } from "framer-motion";
 import { SiHtml5, SiCss, SiJavascript } from "react-icons/si";
 import type { IconType } from "react-icons";
 import FadeIn from "./FadeIn";
@@ -34,8 +32,6 @@ function StackCard({ name, description, icon: Icon, color }: Stack) {
 }
 
 export default function CodingSection() {
-  const stripViewportRef = useRef<HTMLDivElement>(null);
-
   return (
     <section className="bg-brand-beige-light px-6 py-24">
       <div className="mx-auto max-w-6xl text-center">
@@ -55,20 +51,10 @@ export default function CodingSection() {
           <OrbitingGlobe items={STACK} />
         </FadeIn>
 
-        <div ref={stripViewportRef} className="mt-14 overflow-hidden sm:hidden">
-          <motion.div
-            drag="x"
-            dragConstraints={stripViewportRef}
-            dragElastic={0.12}
-            dragTransition={{ power: 0.2, timeConstant: 200 }}
-            className="flex w-max cursor-grab gap-4 px-1 active:cursor-grabbing"
-          >
-            {STACK.map((stack) => (
-              <div key={stack.name} className="w-40 shrink-0">
-                <StackCard {...stack} />
-              </div>
-            ))}
-          </motion.div>
+        <div className="mt-14 flex flex-col gap-4 sm:hidden">
+          {STACK.map((stack) => (
+            <StackCard key={stack.name} {...stack} />
+          ))}
         </div>
 
         <EmailCTAButton

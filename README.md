@@ -1,6 +1,6 @@
 # Little Learners Education
 
-Marketing website for Little Learners Education — a founder-led education,
+Marketing website for Little Learners Education - a founder-led education,
 tuition and therapy practice. Built with Next.js (App Router), TypeScript, and
 Tailwind CSS.
 
@@ -13,8 +13,8 @@ Tailwind CSS.
 - **framer-motion** for scroll-triggered fade/slide-in animation (`FadeIn`)
 - **react-icons** (Lucide set for UI icons, Simple Icons set for the
   HTML/CSS/JS badges in the Coding section)
-- **resend** for transactional email from the contact form (optional — see
-  below)
+- **Formspree** for contact form delivery (no backend code - the form posts
+  straight to a Formspree endpoint)
 
 ## Getting started
 
@@ -27,41 +27,35 @@ Open [http://localhost:3000](http://localhost:3000).
 
 ## Project structure
 
-- `app/page.tsx` — assembles the single long-scroll homepage from
+- `app/page.tsx` - assembles the single long-scroll homepage from
   `app/components/*`
-- `app/privacy-policy/page.tsx`, `app/terms/page.tsx` — legal pages
-- `app/api/contact/route.ts` — contact form Route Handler
+- `app/privacy-policy/page.tsx`, `app/terms/page.tsx` - legal pages
+- `app/components/ContactForm.tsx` - contact form; posts directly to Formspree
+  (`FORMSPREE_ENDPOINT` in `app/lib/site.ts`)
 
 ## What's placeholder and needs replacing before launch
 
-**Images** — all real assets are now wired in: the hero, about, gallery, and
+**Images** - all real assets are now wired in: the hero, about, gallery, and
 video sections use real photos and video served from `/public/images` and
 `/public/videos`. Nothing on the site currently uses stock placeholder imagery.
 
-**Contact form email sending** — the form at `app/api/contact/route.ts`
-already:
+**Contact form** - `ContactForm` posts directly to the Formspree endpoint in
+`FORMSPREE_ENDPOINT` (`app/lib/site.ts`). Formspree:
 
-- validates required fields
-- rejects spam via a honeypot field (`company`), invisible to real users
-- sends the enquiry with [Resend](https://resend.com) **if** a
-  `RESEND_API_KEY` environment variable is set
+- emails each submission to the account owner
+- silently drops spam that fills the hidden `_gotcha` honeypot field
+- uses the `_subject` hidden field for the notification subject line
 
-If no key is configured, the API responds `503 EMAIL_NOT_CONFIGURED` and the
-`ContactForm` component falls back to a `mailto:jasminhewetson@gmail.com` link
-pre-filled with the visitor's message, so the form is never a dead end.
-
-To wire up real sending:
-
-1. Create a [Resend](https://resend.com) account and verify a sending domain
-   (or use their `onboarding@resend.dev` sandbox address for testing).
-2. Set `RESEND_API_KEY` in your deployment environment (e.g. Vercel project
-   env vars) and locally in `.env.local`.
-3. Update the `from` address in `route.ts` once a verified domain is set up.
+On a network/Formspree error the form falls back to a
+`mailto:jasminhewetson@gmail.com` link pre-filled with the visitor's message,
+so it's never a dead end. To point at a different inbox, create a new form in
+Formspree and swap the endpoint (and confirm the address in the Formspree
+dashboard).
 
 ## What a real deploy needs
 
-- A production `RESEND_API_KEY` (or swap in your preferred email provider —
-  the Route Handler is the only place that needs to change)
+- The Formspree form confirmed/verified in the Formspree dashboard (free tier
+  caps monthly submissions; upgrade if needed)
 - A real domain, and an update to `metadataBase` in `app/layout.tsx` to match
   it (currently a placeholder `littlelearnerseducation.co.za`)
 - An Open Graph image (`opengraph-image` file convention or an `images` entry

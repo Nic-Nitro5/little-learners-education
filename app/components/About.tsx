@@ -5,8 +5,8 @@ export default function About() {
   return (
     <section id="about" className="scroll-mt-20 bg-white px-6 py-24">
       <div className="mx-auto max-w-6xl">
-        <FadeIn className="grid items-center gap-12 md:grid-cols-2">
-          <div>
+        <FadeIn className="flex flex-row items-center text-center">
+          <div className="max-w-2xl">
             <h2 className="font-serif text-3xl font-semibold text-brand-brown sm:text-4xl">
               About Miss Jasmin
             </h2>
@@ -38,7 +38,7 @@ export default function About() {
             </p>
           </div>
 
-          <div className="relative mx-auto aspect-4/5 w-full max-w-[360px] overflow-hidden rounded-2xl shadow-xl">
+          <div className="relative mx-auto mt-12 aspect-4/5 w-full max-w-[360px] overflow-hidden rounded-2xl shadow-xl">
             <Image
               src="/images/jasmin.webp"
               alt="Portrait of Jasmin, Teacher, Therapist and Founder of Little Learners Education"

@@ -31,32 +31,30 @@ export default function TermsPage() {
 
       <h2>Payment</h2>
       <p>
-        Payment is required by the first of every month, alternatively
-        before the first lesson commences as this secures your timeslots
-        for the month ahead.
+        Payment is required between the first and fifth of every month as this secures your timeslots for the month ahead.
       </p>
 
-      <h2>Lessons / Time Missed</h2>
+      <h2>Notice</h2>
       <p>
-        In the event that the student or the teacher / tutor misses a
-        lesson or time slot that has been scheduled, for any reason,
-        please note that the time will be carried over e.g. a 1 hour
-        session will become a 1.5 hour session for 2x lessons and so
-        forth &mdash; recovering the time unrendered, and no moneys will
-        be carried forward to a new month/s. Extra time will be added to
-        a new month&apos;s invoice &mdash; not affecting the invoice
-        total. If time is not recovered within the next month (paid
-        invoice), that time will be forfeited. Please give 24 hours
-        notice for any cancellation in order to recover the lesson.
+        Failure to attend a scheduled session without at least 24 hours&apos;
+        notice results in a full charge, with no refund and no make-up time.
+      </p>
+      <p>
+        Where 24 hours&apos; notice is given, or where the teacher or tutor is
+        unable to attend, the time is not lost; it is carried over and
+        made up across later lessons or sessions. For example, a missed one-hour lesson is
+        recovered by extending the next two lessons by thirty minutes each.
+        Payment already made is not refunded and is not carried forward to a
+        new month.
       </p>
 
-      <h2>Termination of Services</h2>
+      <h2>Cancellations</h2>
       <p>
-        We require a full calendar month (30 days) written notice (this
+        We require a full calendar month (thirty days) written notice (this
         can be in email). Please note that it will normally take a
-        maximum of 3 months to recognise substantial improvement in a
+        maximum of two months to recognise substantial improvement in a
         student&apos;s grades, we prefer to have long term students for
-        increased benefit.
+        increased benefits and success.
       </p>
     </LegalPageLayout>
   );

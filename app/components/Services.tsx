@@ -11,37 +11,46 @@ import HoverCard from "./HoverCard";
 import SectionHeading from "./SectionHeading";
 
 type Service = {
+  // `key` drives both the React key and the display order - reorder the section
+  // by changing these numbers rather than moving entries around.
+  key: number;
   title: string;
   description: string;
   icon: IconType;
 };
 
 const SERVICES: Service[] = [
+    {
+    key: 1,
+    title: "Therapy and Counseling",
+    description:
+      "Whether you decide on an online or in-house experience, sessions are guided by qualified, compassionate professionals across a range of therapeutic and counseling approaches, covering emotional, behavioral and developmental support for both children and adults. We work closely with each client and their family to set clear goals and track meaningful progress and lasting growth over time.",
+    icon: LuHeartHandshake,
+  },
   {
+    key: 2,
     title: "Teaching and Tuition",
     description:
       "From daily studying and homework support to building consistent routines and passing grades, we cover every subject and school phase, including full private teaching programs. Sessions are tailored to each learner's pace, whether that's a young child building foundational skills or an adult returning to study, with regular progress check-ins to keep families and students informed every step of the way.",
     icon: LuGraduationCap,
   },
   {
+    key: 3,
     title: "TEFL/TESOL/TESL English",
     description:
       "Qualified to teach English at an internationally recognized standard, covering reading, writing, speaking and comprehension for non-native speakers of all ages. Lessons are delivered in a personal, one-on-one setting or fully online, with structured curricula that build confidence for exams, travel, work or everyday conversation.",
     icon: LuLanguages,
   },
   {
+    key: 4,
     title: "Unique Methods",
     description:
       "There is something different for everyone, so we draw on a toolbox of proven, research-backed teaching methods and adapt them to each learner's strengths, interests and learning style. This approach works just as well for young children finding their feet as it does for adult and varsity-level learners tackling advanced or specialized material.",
     icon: LuSparkles,
   },
-  {
-    title: "Therapy and Counseling",
-    description:
-      "Whether you decide on an online or in-house experience, sessions are guided by qualified, compassionate professionals across a range of therapeutic and counseling approaches, covering emotional, behavioral and developmental support for both children and adults. We work closely with each client and their family to set clear goals and track meaningful progress and lasting growth over time.",
-    icon: LuHeartHandshake,
-  },
 ];
+
+const ORDERED_SERVICES = [...SERVICES].sort((a, b) => a.key - b.key);
 
 export default function Services() {
   return (
@@ -74,8 +83,8 @@ export default function Services() {
           </FadeIn>
 
           <div className="grid gap-8 text-center sm:grid-cols-2 lg:grid-cols-1 lg:gap-6">
-            {SERVICES.map(({ title, description, icon: Icon }, i) => (
-              <FadeIn key={title} delay={i * 0.08}>
+            {ORDERED_SERVICES.map(({ key, title, description, icon: Icon }, i) => (
+              <FadeIn key={key} delay={i * 0.08}>
                 <HoverCard className="flex h-full flex-col items-center gap-4 rounded-2xl border border-white/10 bg-white/5 p-6 text-center transition-colors hover:bg-white/10">
                   <span className="flex h-14 w-14 items-center justify-center rounded-full bg-brand-beige text-brand-brown-dark">
                     <Icon size={26} aria-hidden="true" />

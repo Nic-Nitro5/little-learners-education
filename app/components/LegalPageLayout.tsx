@@ -7,7 +7,7 @@ type LegalPageLayoutProps = {
 
 export default function LegalPageLayout({ title, children }: LegalPageLayoutProps) {
   return (
-    <div className="bg-white px-6 py-24">
+    <div className="bg-white px-6 pb-24 pt-32">
       <div className="mx-auto max-w-3xl">
         <p className="text-sm font-semibold uppercase tracking-[0.3em] text-brand-brown/60">
           Legal

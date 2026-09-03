@@ -3,7 +3,7 @@
 import { useState, type FormEvent } from "react";
 import { motion } from "framer-motion";
 import { LuChevronDown, LuSparkles } from "react-icons/lu";
-import { CONTACT_EMAIL } from "../lib/site";
+import { CONTACT_EMAIL, FORMSPREE_ENDPOINT } from "../lib/site";
 
 const SERVICES = [
   "Private Teaching",
@@ -13,7 +13,7 @@ const SERVICES = [
   "Therapy / Special Needs",
 ];
 
-type Status = "idle" | "submitting" | "success" | "error" | "fallback";
+type Status = "idle" | "submitting" | "success" | "error";
 
 export default function ContactForm() {
   const [status, setStatus] = useState<Status>("idle");
@@ -37,31 +37,23 @@ export default function ContactForm() {
     setStatus("submitting");
 
     const form = e.currentTarget;
-    const formData = new FormData(form);
 
     try {
-      const res = await fetch("/api/contact", {
+      const res = await fetch(FORMSPREE_ENDPOINT, {
         method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({
-          name: formData.get("name"),
-          email: formData.get("email"),
-          service: formData.get("service"),
-          message: formData.get("message"),
-          company: formData.get("company"),
-        }),
+        headers: { Accept: "application/json" },
+        body: new FormData(form),
       });
 
       if (res.ok) {
         setStatus("success");
         form.reset();
-        setFields((f) => ({ ...f, name: "", message: "" }));
-        return;
-      }
-
-      const data = await res.json().catch(() => ({}));
-      if (res.status === 503 && data.error === "EMAIL_NOT_CONFIGURED") {
-        setStatus("fallback");
+        setFields({
+          name: "",
+          email: "",
+          service: SERVICES[0],
+          message: "",
+        });
         return;
       }
 
@@ -73,17 +65,23 @@ export default function ContactForm() {
 
   return (
     <form onSubmit={handleSubmit} className="mx-auto max-w-xl space-y-5" noValidate>
-      {/* Honeypot field — hidden from sighted users, irresistible to bots */}
+      {/* Honeypot - Formspree silently drops any submission that fills `_gotcha` */}
       <div className="absolute -left-[9999px]" aria-hidden="true">
-        <label htmlFor="company">Company</label>
+        <label htmlFor="_gotcha">Company</label>
         <input
           type="text"
-          id="company"
-          name="company"
+          id="_gotcha"
+          name="_gotcha"
           tabIndex={-1}
           autoComplete="off"
         />
       </div>
+
+      <input
+        type="hidden"
+        name="_subject"
+        value={`New enquiry: ${fields.service} - ${fields.name || "Website"}`}
+      />
 
       <div>
         <label htmlFor="name" className="mb-1.5 block text-sm font-medium text-white">
@@ -173,18 +171,8 @@ export default function ContactForm() {
       <div role="status" aria-live="polite">
         {status === "success" && (
           <p className="rounded-lg bg-white/10 px-4 py-3 text-sm text-brand-beige-light">
-            Thank you! Your message has been sent — we&apos;ll get back to you
+            Thank you! Your message has been sent - we&apos;ll get back to you
             soon.
-          </p>
-        )}
-
-        {status === "fallback" && (
-          <p className="rounded-lg bg-white/10 px-4 py-3 text-sm text-brand-beige-light">
-            Email sending isn&apos;t fully configured on this site yet.{" "}
-            <a href={mailtoHref()} className="font-semibold underline">
-              Click here to send your message via your email app instead
-            </a>
-            .
           </p>
         )}
 

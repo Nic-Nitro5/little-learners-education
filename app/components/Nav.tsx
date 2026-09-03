@@ -1,6 +1,7 @@
 "use client";
 
 import Link from "next/link";
+import { usePathname } from "next/navigation";
 import { useEffect, useState } from "react";
 import { LuMenu, LuX } from "react-icons/lu";
 import UnderlineLink from "./UnderlineLink";
@@ -9,6 +10,11 @@ import { NAV_LINKS, LEGAL_LINKS } from "../lib/site";
 export default function Nav() {
   const [open, setOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
+  const pathname = usePathname();
+
+  // The transparent/white nav only works over the homepage hero. Every other
+  // route has a light background from the top, so render the solid nav there.
+  const solid = scrolled || open || pathname !== "/";
 
   useEffect(() => {
     const onScroll = () => setScrolled(window.scrollY > 12);
@@ -29,9 +35,7 @@ export default function Nav() {
   return (
     <header
       className={`fixed inset-x-0 top-0 z-50 transition-colors duration-300 ${
-        scrolled || open
-          ? "bg-white/95 shadow-sm backdrop-blur"
-          : "bg-transparent"
+        solid ? "bg-white/95 shadow-sm backdrop-blur" : "bg-transparent"
       }`}
     >
       <nav
@@ -41,7 +45,7 @@ export default function Nav() {
         <Link
           href="/"
           className={`font-script text-2xl transition-colors ${
-            scrolled || open ? "text-brand-brown" : "text-white"
+            solid ? "text-brand-brown" : "text-white"
           }`}
         >
           Little Learners Education
@@ -53,7 +57,7 @@ export default function Nav() {
               <UnderlineLink
                 href={link.href}
                 className={`text-sm font-medium tracking-wide transition-colors hover:text-brand-beige ${
-                  scrolled ? "text-brand-brown" : "text-white"
+                  solid ? "text-brand-brown" : "text-white"
                 }`}
               >
                 {link.label}
@@ -65,7 +69,7 @@ export default function Nav() {
         <button
           type="button"
           className={`inline-flex items-center justify-center rounded-md p-2 md:hidden ${
-            scrolled || open ? "text-brand-brown" : "text-white"
+            solid ? "text-brand-brown" : "text-white"
           }`}
           aria-label={open ? "Close menu" : "Open menu"}
           aria-expanded={open}
