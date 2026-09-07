@@ -38,7 +38,7 @@ export const SPECIALTIES: Specialty[] = [
   { name: "Private Teaching", icon: LuUser },
   { name: "Assessments | Evaluations", icon: LuClipboardCheck },
   { name: "Play Therapy", icon: LuPuzzle },
-  { name: "Art Therapy | The Creatives Club", icon: LuPalette },
+  { name: "The Creatives Club", icon: LuPalette },
 ];
 
 // Subtle, candid "photos on a corkboard" tilt per card - index-aligned with
