@@ -29,7 +29,7 @@ type Specialty = {
 // bento tiles. Keeping one at index 0 and the next at index 5 makes the ten
 // cards tile a perfect 4x4 with no empty corner.
 export const SPECIALTIES: Specialty[] = [
-  { name: "Educational Psychology", icon: LuBrain, featured: true },
+  { name: "Educational Therapy", icon: LuBrain, featured: true },
   { name: "Special Needs", icon: LuHeartHandshake },
   { name: "Therapy | Counselling", icon: LuMessageCircle },
   { name: "TESOL | TEFL | TESL", icon: LuLanguages },
