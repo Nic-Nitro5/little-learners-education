@@ -8,7 +8,7 @@ export default function About() {
         <FadeIn className="grid items-center gap-12 text-center md:grid-cols-2 md:text-left">
           <div className="max-w-2xl">
             <h2 className="font-serif text-3xl font-semibold text-brand-brown sm:text-4xl">
-              About Miss Jasmin
+              About Ms Jasmin
             </h2>
             <p className="mt-6 leading-relaxed text-brand-brown">
               The international company, led by Jasmin, who is a Teacher,

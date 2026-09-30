@@ -10,7 +10,7 @@ export const FORMSPREE_ENDPOINT = "https://formspree.io/f/mnpqvkao";
 
 export const NAV_LINKS = [
   { href: "/", label: "Home" },
-  { href: "/#about", label: "About Miss Jasmin" },
+  { href: "/#about", label: "About Ms Jasmin" },
   { href: "/#specialties", label: "Specialities" },
   { href: "/#portfolio", label: "Methods" },
   { href: "/#contact", label: "Contact" },
